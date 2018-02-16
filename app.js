@@ -5,11 +5,13 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
+require("dotenv").config();
+
 const index = require('./routes/index');
 const users = require('./routes/users');
 
 const mongoose = require("mongoose");
-mongoose.connect('mongodb://localhost/my-db');
+mongoose.connect(process.env.MONGODB_URI);
 
 const app = express();
 
